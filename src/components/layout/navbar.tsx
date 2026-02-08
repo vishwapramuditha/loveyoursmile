@@ -36,12 +36,21 @@ export function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
 
                 <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
                     <div className="w-full flex-1 md:w-auto md:flex-none">
-                        <div className="relative">
-                            <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
-                            <Input
-                                placeholder="Search Zero-Bot..."
-                                className="pl-8 md:w-[300px] lg:w-[400px] bg-muted/50"
-                            />
+                        <div className="flex-1 max-w-xl mx-4">
+                            <div className="relative group">
+                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4 group-focus-within:text-primary transition-colors" />
+                                <Input
+                                    placeholder="Search communities, posts, or humans..."
+                                    className="pl-10 bg-muted/20 border-border/40 focus-visible:bg-background focus-visible:ring-1 focus-visible:ring-primary/20 transition-all rounded-full"
+                                    onKeyDown={(e) => {
+                                        if (e.key === "Enter") {
+                                            // For prototype, just show a toast
+                                            // In real app, router.push(`/search?q=${e.currentTarget.value}`)
+                                            import("sonner").then(mod => mod.toast.info(`Searching for: ${e.currentTarget.value}`))
+                                        }
+                                    }}
+                                />
+                            </div>
                         </div>
                     </div>
                     <nav className="flex items-center space-x-2">

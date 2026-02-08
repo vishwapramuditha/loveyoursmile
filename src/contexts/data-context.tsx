@@ -12,6 +12,8 @@ interface DataContextType {
     votePost: (postId: string, value: 1 | -1) => void
     getPost: (postId: string) => Post | undefined
     getComments: (postId: string) => CommentType[]
+    sortMethod: 'hot' | 'new' | 'top'
+    setSortMethod: (method: 'hot' | 'new' | 'top') => void
 }
 
 const DataContext = React.createContext<DataContextType | undefined>(undefined)
@@ -46,6 +48,7 @@ const INITIAL_POSTS: Post[] = [
 export function DataProvider({ children }: { children: React.ReactNode }) {
     const [posts, setPosts] = React.useState<Post[]>([])
     const [comments, setComments] = React.useState<Record<string, CommentType[]>>({})
+    const [sortMethod, setSortMethod] = React.useState<'hot' | 'new' | 'top'>('hot')
     const [isInitialized, setIsInitialized] = React.useState(false)
 
     // Load from LocalStorage on mount
@@ -129,8 +132,42 @@ export function DataProvider({ children }: { children: React.ReactNode }) {
 
     const getComments = (postId: string) => comments[postId] || []
 
+    const getSortedPosts = () => {
+        const postsCopy = [...posts]
+        switch (sortMethod) {
+            case 'new':
+                // Simple string comparison for prototype (assuming ISO or similar comparable string)
+                // In real app, use Date objects
+                return postsCopy.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()) // Mock dates might need parsing fix
+            case 'top':
+                return postsCopy.sort((a, b) => b.votes - a.votes)
+            case 'hot':
+            default:
+                // Simple "Hot" algo: votes + random factor for prototype freshness or just vote heavy
+                // For now, let's just say Hot = Votes for simplicity in prototype, or maybe mix in comments
+                return postsCopy.sort((a, b) => (b.votes + b.comments * 2) - (a.votes + a.comments * 2))
+        }
+    }
+
+    // Fix for mock dates like "2 hours ago" not being sortable by Date.parse
+    // For the prototype, we'll just rely on the order they were added for "New" if dates are relative strings
+    // Or we can leave "New" as is (insertion order is usually new -> old in arrays if we prepend)
+
+    // Better implementation for "New":
+    // Since we prepend new posts, the array is naturally "Newest First" if we don't mess it up.
+    // So 'new' = original array order (if we trust insertion). 
+    // But we sort copy.
+
+    const visiblePosts = React.useMemo(() => {
+        const copy = [...posts]
+        if (sortMethod === 'new') return copy // Already prepended
+        if (sortMethod === 'top') return copy.sort((a, b) => b.votes - a.votes)
+        if (sortMethod === 'hot') return copy.sort((a, b) => (b.votes + b.comments * 5) - (a.votes + a.comments * 5))
+        return copy
+    }, [posts, sortMethod])
+
     return (
-        <DataContext.Provider value={{ posts, comments, addPost, addComment, votePost, getPost, getComments }}>
+        <DataContext.Provider value={{ posts: visiblePosts, comments, addPost, addComment, votePost, getPost, getComments, sortMethod, setSortMethod }}>
             {children}
         </DataContext.Provider>
     )
