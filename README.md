@@ -1,75 +1,132 @@
-# Zero-Bot: The First Truly Human Social Network
+# Zero-Bot: The Future of Authentic Social Networking
 
-![Zero-Bot Banner](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Next.js](https://img.shields.io/badge/Next.js-15.0-black)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8)
+![Status](https://img.shields.io/badge/Status-Prototype-orange)
 
-**Zero-Bot** is an open-source social platform built on a single, uncompromising premise: **No Bots. Just People.**
+![Zero-Bot Hero](https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&auto=format&fit=crop)
 
-In an era where AI generates 90% of internet traffic, Zero-Bot guarantees that every interaction is authentic. We achieve this through cryptographic **Proof of Personhood (PoP)** verification, ensuring 1 person = 1 account, without compromising privacy.
+> **"In a world of synthetic noise, be the signal."**
 
-## 🚀 Features
+**Zero-Bot** is not just another social platform; it's a movement. We are building the world's first **Proof-of-Personhood (PoP)** native social network. 
 
--   **Human-Only Feed**: Every post and comment is signed by a verified human execution trace.
--   **Proof of Personhood**: Zero-knowledge biometric verification (simulated for prototype).
--   **Deep Space Aesthetic**: A premium, "Deep Space" dark mode designed for focus and immersion.
--   **Community Governance**: User-driven moderation and community creation.
--   **Privacy First**: No real names required. Use handles, but verify your humanity.
+🛑 **The Problem**: The internet is overrun by bots, farm-generated content, and AI noise.
+✅ **The Solution**: An exclusive, verified space where **1 Account = 1 Human**. Guaranteed.
+
+---
+
+## ✨ Key Features
+
+-   **🛡️ Sybil-Resistant Identity**: Integrated "Proof of Personhood" checks ensure every user is a unique living human. (Simulated in prototype).
+-   **🌌 "Deep Space" UI**: A premium, glassmorphic dark mode interface designed for immersion and focus.
+-   **⚡ Real-time Interactivity**: Instant posts, threaded comments, and live voting using local state optimizations.
+-   **🗳️ Community Governance**: Decentralized subreddit-style communities (`/r/[slug]`) managed by verified humans.
+-   **🔒 Privacy-Preserving**: Verify your humanity without revealing your real name. Anonymity meets Accountability.
+
+---
 
 ## 🛠️ Tech Stack
 
--   **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
--   **Language**: [TypeScript](https://www.typescriptlang.org/)
--   **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn/UI](https://ui.shadcn.com/)
--   **State Management**: React Context + LocalStorage (Prototype) / Supabase (Production)
--   **Icons**: [Lucide React](https://lucide.dev/)
--   **Theming**: `next-themes`
+Built with the latest and greatest in modern web development:
 
-## 🏁 Getting Started
+-   **Framework**: [Next.js 15](https://nextjs.org/) (App Router & Server Actions)
+-   **Language**: [TypeScript](https://www.typescriptlang.org/) for type safety.
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [Shadcn/UI](https://ui.shadcn.com/) for beautiful components.
+-   **State**: React Context API + LocalStorage for persistent client-side data.
+-   **Icons**: [Lucide React](https://lucide.dev/).
+-   **Linting**: ESLint + Prettier.
+
+---
+
+## 📂 Project Structure
+
+```bash
+zero-bot/
+├── src/
+│   ├── app/                # Next.js App Router pages
+│   │   ├── (main)/         # Authenticated routes (Feed, Communities)
+│   │   └── login/          # Auth routes
+│   ├── components/         # React components
+│   │   ├── feed/           # Feed & PostCard components
+│   │   ├── layout/         # Navbar & Sidebar
+│   │   ├── ui/             # Shadcn/UI primitives
+│   │   └── ...
+│   ├── contexts/           # Global state (Auth, Data)
+│   └── lib/                # Utilities & Helpers
+├── public/                 # Static assets
+└── ...
+```
+
+---
+
+## 🚀 Getting Started
+
+Ready to experience a bot-free world? Follow these steps:
 
 ### Prerequisites
-
--   Node.js 18+
--   npm or yarn
+-   Node.js 18.17 or later
+-   npm, yarn, or pnpm
 
 ### Installation
 
-1.  **Clone the repository**
+1.  **Clone the Repository**
     ```bash
     git clone https://github.com/vishwapramuditha/zero-bot.git
     cd zero-bot
     ```
 
-2.  **Install dependencies**
+2.  **Install Dependencies**
     ```bash
     npm install
+    # or
+    yarn install
     ```
 
-3.  **Run the development server**
+3.  **Run Development Server**
     ```bash
     npm run dev
     ```
 
-4.  **Open in Browser**
-    Navigate to `http://localhost:3005` to see the app running.
-
-## 🤝 Contributing
-
-We welcome contributions from the community! Whether you're a developer, designer, or idea generator, your input is valuable.
-
-**Lead Developer & Maintainer:**
-**Vishwa Pramuditha**  
-📧 Email: [contact@vishwapramuditha.com](mailto:contact@vishwapramuditha.com)
-
-### How to Contribute
-1.  Fork the repository.
-2.  Create a feature branch (`git checkout -b feature/amazing-feature`).
-3.  Commit your changes (`git commit -m 'Add some amazing feature'`).
-4.  Push to the branch (`git push origin feature/amazing-feature`).
-5.  Open a Pull Request.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+4.  **Launch**
+    Open [http://localhost:3005](http://localhost:3005) in your browser.
 
 ---
 
-*Built with ❤️ by Verified Humans.*
+## 🗺️ Roadmap
+
+-   [x] **Phase 1: Foundation** (Core UI, Auth Mock, Feed, Comments)
+-   [ ] **Phase 2: Backend** (Supabase Integration, Real Database)
+-   [ ] **Phase 3: Identity** (Integration with World ID / PolygonID)
+-   [ ] **Phase 4: Mobile** (React Native App)
+-   [ ] **Phase 5: Mainnet Launch**
+
+---
+
+## 🤝 Contributing
+
+We believe in open source and community-driven development. Zero-Bot is built by humans, for humans.
+
+**Lead Developer:**
+**Vishwa Pramuditha**  
+📧 [contact@vishwapramuditha.com](mailto:contact@vishwapramuditha.com)
+
+### How to help?
+1.  Fork the repo.
+2.  Create a fresh branch (`git checkout -b feature/cool-idea`).
+3.  Commit your code (`git commit -m 'Add cool idea'`).
+4.  Push it (`git push origin feature/cool-idea`).
+5.  Open a Pull Request!
+
+---
+
+## 📄 License
+
+This project is open-source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  <i>"Don't Trust. Verify."</i>
+</p>
